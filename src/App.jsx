@@ -5,7 +5,7 @@ import { useIsMobile } from './hooks/useIsMobile';
 import { Sidebar } from './components/Sidebar';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Gallery } from './components/Gallery';
+import { Operations } from './components/Operations';
 import { Marquee } from './components/Marquee';
 import { About } from './components/About';
 import { ClearanceHub } from './components/ClearanceHub';
@@ -22,6 +22,8 @@ import { FooterMobile } from './components/FooterMobile';
 // Shared components
 import { RedString } from './components/RedString';
 import { CustomCursor } from './components/CustomCursor';
+import { SiteManager } from './components/SiteManager';
+import { BootSequence } from './components/BootSequence';
 // Data
 import { artworks as allArtworks } from './data/artworks';
 import { hydrateArtwork } from './utils/artworkUrls';
@@ -45,6 +47,9 @@ const usePageVisibility = () => {
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [managerOpen, setManagerOpen] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(true);
+  const [bootInProgress, setBootInProgress] = useState(true);
   const isPageVisible = usePageVisibility();
   const isMobile = useIsMobile();
 
@@ -53,6 +58,18 @@ function App() {
   useEffect(() => {
     return initPointerStore();
   }, []);
+
+  // Manage overflow during boot
+  useEffect(() => {
+    if (bootInProgress) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [bootInProgress]);
 
   useEffect(() => {
     // Screen flicker effect - disable when page not visible
@@ -79,6 +96,32 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Site Manager keyboard shortcut (Alt+W)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.altKey || e.metaKey) && e.key === 'w') {
+        e.preventDefault();
+        setManagerOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Manage body class for loading state
+  useEffect(() => {
+    if (isPageLoading) {
+      document.body.classList.add('loading-active');
+    } else {
+      document.body.classList.remove('loading-active');
+    }
+
+    return () => {
+      document.body.classList.remove('loading-active');
+    };
+  }, [isPageLoading]);
+
   // Mobile artwork manifest load (hooks must not be inside conditional returns)
   useEffect(() => {
     let cancelled = false;
@@ -93,9 +136,15 @@ function App() {
         const manifest = await res.json();
         const hydrated = manifest.map(hydrateArtwork);
 
-        if (!cancelled) setMobileArtworks(hydrated);
-      } catch (e) {
-        if (!cancelled) setMobileArtworks(allArtworks.map(hydrateArtwork));
+        if (!cancelled) {
+          setMobileArtworks(hydrated);
+          setIsPageLoading(false);
+        }
+      } catch {
+        if (!cancelled) {
+          setMobileArtworks(allArtworks.map(hydrateArtwork));
+          setIsPageLoading(false);
+        }
       }
     };
 
@@ -109,9 +158,21 @@ function App() {
   if (isMobile) {
     return (
       <div className="app-root app-root-mobile">
+        {/* Boot Sequence Overlay */}
+        {bootInProgress && <BootSequence onBootComplete={() => setBootInProgress(false)} />}
+
+        {/* Loading Overlay */}
+        {isPageLoading && (
+          <div className="loading-overlay">
+            <div className="loading-content">
+              <div className="loading-spinner"></div>
+              <p className="loading-text">INITIALIZING...</p>
+            </div>
+          </div>
+        )}
         <CustomCursor />
-        <NavbarMobile />
-        <main className="app-main-mobile" style={{ marginTop: '48px' }}>
+        <NavbarMobile style={{ visibility: bootInProgress ? 'hidden' : 'visible' }} />
+        <main className="app-main-mobile" style={{ marginTop: '48px', visibility: bootInProgress ? 'hidden' : 'visible' }}>
           <HeroMobile />
           <MarqueeMobile
             text="◈ CHARACTER DESIGN ◈ CONCEPT ART ◈ COMMISSIONS OPEN ◈"
@@ -124,6 +185,7 @@ function App() {
           <NetworkMobile />
           <FooterMobile />
         </main>
+        {managerOpen && <SiteManager onClose={() => setManagerOpen(false)} />}
       </div>
     );
   }
@@ -131,18 +193,31 @@ function App() {
   // Desktop View
   return (
     <div className="app-root">
+      {/* Boot Sequence Overlay */}
+      {bootInProgress && <BootSequence onBootComplete={() => setBootInProgress(false)} />}
+
+      {/* Loading Overlay */}
+      {isPageLoading && (
+        <div className="loading-overlay">
+          <div className="loading-content">
+            <div className="loading-spinner"></div>
+            <p className="loading-text">INITIALIZING...</p>
+          </div>
+        </div>
+      )}
+
       {/* Custom Cursor and Red String Effects */}
       <CustomCursor />
       <RedString />
 
       {/* Sidebar */}
-      <Sidebar />
+      <Sidebar style={{ visibility: bootInProgress ? 'hidden' : 'visible' }} />
 
       {/* Navbar */}
-      <Navbar scrolled={scrolled} />
+      <Navbar scrolled={scrolled} style={{ visibility: bootInProgress ? 'hidden' : 'visible' }} />
 
       {/* Main Content */}
-      <main className="app-main">
+      <main className="app-main" style={{ visibility: bootInProgress ? 'hidden' : 'visible' }}>
         {/* Hero Section */}
         <Hero />
 
@@ -153,8 +228,8 @@ function App() {
           speed="slow"
         />
 
-        {/* Gallery */}
-        <Gallery />
+        {/* Gallery - Browse by Operations */}
+        {mobileArtworks.length > 0 && <Operations artworks={mobileArtworks} />}
 
         {/* Marquee 2 */}
         <Marquee
@@ -179,6 +254,9 @@ function App() {
         {/* Social network */}
         <Network />
       </main>
+
+      {/* Site Manager */}
+      {managerOpen && <SiteManager onClose={() => setManagerOpen(false)} />}
     </div>
   );
 }

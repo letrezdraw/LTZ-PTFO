@@ -47,7 +47,7 @@ export const Network = () => {
       <div
         className="section-stamp net-reveal"
         style={{
-          fontSize: '12px',
+          fontSize: '22px',
           color: 'var(--text-primary)',
           textTransform: 'uppercase',
           letterSpacing: '2px',
@@ -62,7 +62,7 @@ export const Network = () => {
       <p
         className="net-reveal net-lead"
         style={{
-          fontSize: '12px',
+          fontSize: '22px',
           color: 'var(--text-secondary)',
           maxWidth: '560px',
           lineHeight: '1.7',
@@ -100,9 +100,9 @@ export const Network = () => {
               rel="noopener noreferrer"
               className="network-card interactive"
             >
-            <div style={{ fontSize: '12px', color: 'var(--accent-red)', letterSpacing: '2px', marginBottom: '8px' }}>{s.label}</div>
-            <div style={{ fontSize: '14px', color: 'var(--text-primary)', fontFamily: "'Cinzel', serif" }}>{s.handle}</div>
-            <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '12px' }}>[ OPEN CHANNEL → ]</div>
+            <div style={{ fontSize: '22px', color: 'var(--accent-red)', letterSpacing: '2px', marginBottom: '8px' }}>{s.label}</div>
+            <div style={{ fontSize: '22px', color: 'var(--text-primary)', fontFamily: "'Cinzel', serif" }}>{s.handle}</div>
+            <div style={{ fontSize: '22px', color: 'var(--text-muted)', marginTop: '12px' }}>[ OPEN CHANNEL → ]</div>
             </a>
           </div>
         ))}

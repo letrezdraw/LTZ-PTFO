@@ -55,7 +55,7 @@ export const About = () => {
       <div
         className="section-stamp about-reveal"
         style={{
-          fontSize: '12px',
+          fontSize: '22px',
           color: 'var(--text-primary)',
           textTransform: 'uppercase',
           letterSpacing: '2px',

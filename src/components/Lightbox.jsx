@@ -137,7 +137,7 @@ export const Lightbox = ({ artwork, currentIndex, totalFiles, onClose, onNext, o
               borderBottom: '1px solid var(--border-color)'
             }}
           >
-            <div style={{ fontSize: '12px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+            <div style={{ fontSize: '22px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px' }}>
               TOP SECRET // DECLASSIFIED
             </div>
             <div style={{ display: 'flex', gap: '16px' }}>
@@ -145,7 +145,7 @@ export const Lightbox = ({ artwork, currentIndex, totalFiles, onClose, onNext, o
                 type="button"
                 onClick={() => window.open(artwork.imageHd || artwork.image, '_blank')}
                 style={{
-                  fontSize: '11px',
+                  fontSize: '15px',
                   color: 'var(--text-secondary)',
                   border: 'none',
                   background: 'none',
@@ -166,7 +166,7 @@ export const Lightbox = ({ artwork, currentIndex, totalFiles, onClose, onNext, o
                 type="button"
                 onClick={handleClose}
                 style={{
-                  fontSize: '11px',
+                  fontSize: '15px',
                   color: 'var(--text-secondary)',
                   border: 'none',
                   background: 'none',
@@ -220,19 +220,19 @@ export const Lightbox = ({ artwork, currentIndex, totalFiles, onClose, onNext, o
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
               <div>
-                <div style={{ fontSize: '11px', color: 'var(--accent-red)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                <div style={{ fontSize: '15px', color: 'var(--accent-red)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
                   {artwork.id}
                 </div>
-                <div style={{ fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                <div style={{ fontSize: '15px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
                   TYPE: {artwork.category}
                 </div>
               </div>
 
               <div>
-                <h4 style={{ fontSize: '11px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                <h4 style={{ fontSize: '15px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                   // METADATA
                 </h4>
-                <div style={{ fontSize: '11px', color: 'var(--text-secondary)', lineHeight: '1.8' }}>
+                <div style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: '1.8' }}>
                   {artwork.year ? <div>YEAR: {artwork.year}</div> : null}
                   {artwork.medium ? <div>MEDIUM: {artwork.medium}</div> : null}
                   <div>CATEGORY: {artwork.category}</div>
@@ -241,28 +241,28 @@ export const Lightbox = ({ artwork, currentIndex, totalFiles, onClose, onNext, o
               </div>
 
               <div>
-                <h4 style={{ fontSize: '11px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                <h4 style={{ fontSize: '15px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                   // ARTWORK_BRIEF
                 </h4>
-                <p style={{ fontSize: '11px', color: 'var(--text-secondary)', lineHeight: '1.8', margin: 0 }}>
+                <p style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: '1.8', margin: 0 }}>
                   {artwork.description || '—'}
                 </p>
               </div>
 
               {artwork.tools?.length ? (
                 <div>
-                  <h4 style={{ fontSize: '11px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                  <h4 style={{ fontSize: '15px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                     // TOOLS_USED
                   </h4>
-                  <div style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>{artwork.tools.join(' · ')}</div>
+                  <div style={{ fontSize: '15px', color: 'var(--text-secondary)' }}>{artwork.tools.join(' · ')}</div>
                 </div>
               ) : null}
 
               <div>
-                <h4 style={{ fontSize: '11px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                <h4 style={{ fontSize: '15px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                   // COMMISSION_STATUS
                 </h4>
-                <div style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
+                <div style={{ fontSize: '15px', color: 'var(--text-secondary)' }}>
                   ◉ {artwork.commissionStatus || 'OPEN'} — Request Available
                 </div>
               </div>
@@ -272,7 +272,7 @@ export const Lightbox = ({ artwork, currentIndex, totalFiles, onClose, onNext, o
           {extras.length > 0 && (
             <>
               <div style={{ marginBottom: '24px', paddingBottom: '16px', borderBottom: '1px solid var(--border-color)' }}>
-                <h3 style={{ fontSize: '12px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>
+                <h3 style={{ fontSize: '22px', color: 'var(--accent-red)', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>
                   // RELATED_ASSETS (from ARTWORK folder: 2, 3, 4…)
                 </h3>
               </div>
@@ -324,7 +324,7 @@ export const Lightbox = ({ artwork, currentIndex, totalFiles, onClose, onNext, o
                             top: '12px',
                             right: '12px',
                             zIndex: 2,
-                            fontSize: '11px',
+                            fontSize: '15px',
                             color: 'var(--text-secondary)',
                             background: 'rgba(0,0,0,0.55)',
                             border: '1px solid var(--border-color)',
@@ -354,7 +354,7 @@ export const Lightbox = ({ artwork, currentIndex, totalFiles, onClose, onNext, o
                         />
                       </div>
 
-                      <div style={{ fontSize: '12px', color: 'var(--accent-red)', letterSpacing: '1px' }}>
+                      <div style={{ fontSize: '22px', color: 'var(--accent-red)', letterSpacing: '1px' }}>
                         FILE_{String(idx + 2).padStart(2, '0')}
                       </div>
                     </div>
@@ -387,7 +387,7 @@ export const Lightbox = ({ artwork, currentIndex, totalFiles, onClose, onNext, o
               [← PREV FILE]
             </button>
 
-            <div style={{ fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+            <div style={{ fontSize: '15px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
               {isLoading ? (
                 <span style={{ animation: 'pulse-blink 1.5s infinite', display: 'inline-block' }}>LOADING...</span>
               ) : (

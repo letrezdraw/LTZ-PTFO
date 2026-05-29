@@ -60,7 +60,7 @@ export const NetworkMobile = () => {
       <div
         className="section-stamp net-reveal"
         style={{
-          fontSize: '11px',
+          fontSize: '15px',
           color: 'var(--text-primary)',
           textTransform: 'uppercase',
           letterSpacing: '1.5px',
@@ -76,7 +76,7 @@ export const NetworkMobile = () => {
       <p
         className="net-reveal net-lead"
         style={{
-          fontSize: '11px',
+          fontSize: '15px',
           color: 'var(--text-secondary)',
           lineHeight: '1.6',
           marginBottom: '20px',
@@ -132,13 +132,13 @@ export const NetworkMobile = () => {
                 e.currentTarget.querySelector('.net-label').style.color = 'var(--text-secondary)';
               }}
             >
-              <div className="net-label" style={{ fontSize: '10px', color: 'var(--text-secondary)', letterSpacing: '1px', marginBottom: '6px', transition: 'color 0.2s' }}>
+              <div className="net-label" style={{ fontSize: '22px', color: 'var(--text-secondary)', letterSpacing: '1px', marginBottom: '6px', transition: 'color 0.2s' }}>
                 {s.label}
               </div>
-              <div style={{ fontSize: '12px', color: 'var(--text-primary)', fontFamily: "'Cinzel', serif", fontWeight: 500 }}>
+              <div style={{ fontSize: '22px', color: 'var(--text-primary)', fontFamily: "'Cinzel', serif", fontWeight: 500 }}>
                 {s.handle}
               </div>
-              <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '8px' }}>
+              <div style={{ fontSize: '22px', color: 'var(--text-muted)', marginTop: '8px' }}>
                 [ OPEN → ]
               </div>
             </a>

@@ -70,6 +70,7 @@ export const Gallery = () => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentIndex((i) => Math.min(i, Math.max(0, pieces.length - 1)));
   }, [pieces.length]);
 
@@ -131,7 +132,7 @@ export const Gallery = () => {
       <div
         className="section-stamp"
         style={{
-          fontSize: '12px',
+          fontSize: '22px',
           color: 'var(--text-primary)',
           textTransform: 'uppercase',
           letterSpacing: '2px',
@@ -161,7 +162,7 @@ export const Gallery = () => {
             type="button"
             onClick={() => setViewMode(mode)}
             style={{
-              fontSize: '12px',
+              fontSize: '22px',
               color: viewMode === mode ? 'var(--accent-red)' : 'var(--text-secondary)',
               textTransform: 'uppercase',
               letterSpacing: '1px',
@@ -186,7 +187,7 @@ export const Gallery = () => {
             disabled={currentIndex === 0}
             style={{
               position: 'relative',
-              fontSize: '24px',
+              fontSize: '26px',
               background: 'none',
               border: '1px solid var(--border-color)',
               color: currentIndex === 0 ? 'var(--text-muted)' : 'var(--accent-red)',
@@ -247,7 +248,7 @@ export const Gallery = () => {
             disabled={currentIndex === pieces.length - 1}
             style={{
               position: 'relative',
-              fontSize: '24px',
+              fontSize: '26px',
               background: 'none',
               border: '1px solid var(--border-color)',
               color: currentIndex === pieces.length - 1 ? 'var(--text-muted)' : 'var(--accent-red)',

@@ -163,7 +163,7 @@ export const CustomCursor = () => {
           position: 'fixed',
           top: 0,
           left: 0,
-          fontSize: '12px',
+          fontSize: '22px',
           color: 'var(--accent-red)',
           fontFamily: "'Share Tech Mono', monospace",
           pointerEvents: 'none',
@@ -177,7 +177,7 @@ export const CustomCursor = () => {
       >
         <div data-cursor-coords>X:0000 Y:0000</div>
         {cursorContext ? (
-          <div style={{ fontSize: '9px', marginTop: '2px' }}>{cursorContext}</div>
+          <div style={{ fontSize: '15px', marginTop: '2px' }}>{cursorContext}</div>
         ) : null}
       </div>
     </>

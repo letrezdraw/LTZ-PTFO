@@ -62,6 +62,17 @@ export const GalleryCard = memo(({ artwork }) => {
             decoding="async"
             className="gallery-card-3d__img"
             draggable={false}
+            onError={(e) => {
+              e.target.style.display = 'none';
+              const parent = e.target.parentElement;
+              if (parent && !parent.querySelector('.placeholder-image')) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'placeholder-image';
+                placeholder.style.cssText = 'position:absolute; top:0; left:0; width:100%; height:100%; backgroundColor:#333; display:flex; alignItems:center; justifyContent:center; color:#666; fontSize:14px;';
+                placeholder.textContent = 'Image Not Available';
+                parent.appendChild(placeholder);
+              }
+            }}
           />
           <div className={`gallery-card-3d__overlay${hover ? ' is-on' : ''}`} />
           <div className="corner-bracket corner-tl" />

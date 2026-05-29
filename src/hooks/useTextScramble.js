@@ -9,6 +9,7 @@ export const useTextScramble = (text, enabled = false, duration = 200) => {
 
   useEffect(() => {
     if (!enabled) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDisplayedText(text);
       return;
     }

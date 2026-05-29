@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap';
 import { pointer } from '../pointerStore';
 import { scrollToSection } from '../utils/scrollToSection';
 import { useDeviceCapability } from '../hooks/useDeviceCapability';
@@ -7,7 +6,7 @@ import { useRenderTheme } from '../context/RenderThemeContext';
 import PixelBlast from './PixelBlast';
 
 export const Hero = () => {
-  const [bootComplete, setBootComplete] = useState(false);
+  const [bootComplete] = useState(true); // Boot is now handled by BootSequence at App level
   const [showGlitch, setShowGlitch] = useState(false);
   const device = useDeviceCapability();
   const { themeIndex } = useRenderTheme();
@@ -20,93 +19,8 @@ export const Hero = () => {
   // Determine if light theme (includes both beige and white/pink themes)
   const isLightTheme = themeIndex === 3 || themeIndex === 4; // data-render-style='4' or '5'
 
-  // Disable scrolling during boot sequence
-  useEffect(() => {
-    if (bootComplete) {
-      document.body.style.overflow = '';
-    } else {
-      document.body.style.overflow = 'hidden';
-    }
-    
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [bootComplete]);
-
-  // Boot sequence animation
-  useEffect(() => {
-    if (bootComplete) return;
-
-    const bootLines = [
-      { text: 'INITIALIZING ARCHIVE SYSTEM...', delay: 0 },
-      { text: 'CLEARANCE LEVEL: UNRESTRICTED', delay: 0.6 },
-      { text: 'ACCESSING FILE: LETREZDRAW_ART_VAULT', delay: 1.2 },
-      { text: 'ENCRYPTION: BYPASSED', delay: 1.8 },
-      { text: 'STATUS: [████████████] 100% LOADED', delay: 2.2 },
-      { text: 'WARNING: CLASSIFIED CONTENT AHEAD', delay: 2.8, isRed: true },
-      { text: 'PRESS ANY KEY TO DECLASSIFY...', delay: 3.2, isBlinking: true }
-    ];
-
-    const timeline = gsap.timeline();
-
-    bootLines.forEach((line, idx) => {
-      const elementId = `boot-line-${idx}`;
-      // Type in the text character by character
-      timeline.to(
-        `#${elementId}`,
-        {
-          duration: line.text.length * 0.02,
-          onStart: () => {
-            const el = document.getElementById(elementId);
-            if (el) {
-              let displayText = '';
-              const chars = line.text.split('');
-              let charIdx = 0;
-
-              const typeInterval = setInterval(() => {
-                if (charIdx < chars.length) {
-                  displayText += chars[charIdx];
-                  el.textContent = displayText;
-                  charIdx++;
-                } else {
-                  clearInterval(typeInterval);
-                }
-              }, 20);
-            }
-          }
-        },
-        line.delay
-      );
-    });
-
-    // After boot sequence, wait for key press or auto-complete
-    timeline.set({}, {}, '+=1');
-
-    // Listen for key press to skip boot
-    const handleKeyPress = () => {
-      timeline.progress(1);
-      document.removeEventListener('keydown', handleKeyPress);
-      document.removeEventListener('click', handleKeyPress);
-    };
-
-    document.addEventListener('keydown', handleKeyPress);
-    document.addEventListener('click', handleKeyPress);
-
-    // Complete boot after timeline finishes
-    timeline.eventCallback('onComplete', () => {
-      setBootComplete(true);
-    });
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress);
-      document.removeEventListener('click', handleKeyPress);
-    };
-  }, [bootComplete]);
-
   // Glitch effect on main title
   useEffect(() => {
-    if (!bootComplete) return;
-
     const glitchInterval = setInterval(() => {
       if (Math.random() > 0.7) {
         setShowGlitch(true);
@@ -115,11 +29,11 @@ export const Hero = () => {
     }, 3000 + Math.random() * 2000);
 
     return () => clearInterval(glitchInterval);
-  }, [bootComplete]);
+  }, []);
 
   // Spotlight + mouse readout (single rAF, no React updates per move)
   useEffect(() => {
-    if (!bootComplete || !spotlightRef.current || !containerRef.current) return;
+    if (!spotlightRef.current || !containerRef.current) return;
 
     const spotlight = spotlightRef.current;
     const container = containerRef.current;
@@ -170,7 +84,7 @@ export const Hero = () => {
       window.removeEventListener('resize', onResize);
       cancelAnimationFrame(rafId);
     };
-  }, [bootComplete]);
+  }, []);
 
   return (
     <section
@@ -240,41 +154,22 @@ export const Hero = () => {
           }}
         />
       )}
-      {/* Boot Sequence */}
-      {!bootComplete && (
-        <div style={{
-          width: '100%',
-          maxWidth: '600px',
-          fontFamily: "'Share Tech Mono', monospace",
-          fontSize: '14px',
-          lineHeight: '2',
-          color: 'var(--text-primary)',
-          whiteSpace: 'pre-wrap',
-          wordBreak: 'break-all'
-        }}>
-          {[...Array(7)].map((_, i) => (
-            <div key={i} id={`boot-line-${i}`} style={{ minHeight: '24px' }} />
-          ))}
-        </div>
-      )}
-
       {/* Hero Content */}
-      {bootComplete && (
-        <div
-          style={{
-            opacity: 0,
-            animation: 'fade-in 0.8s ease-in-out forwards',
-            position: 'relative',
-            zIndex: 10
-          }}
-        >
+      <div
+        style={{
+          opacity: 0,
+          animation: 'fade-in 0.8s ease-in-out forwards',
+          position: 'relative',
+          zIndex: 10
+        }}
+      >
           {/* Top Left - File ID */}
           <div
             style={{
               position: 'absolute',
               top: '0',
               left: '64px',
-              fontSize: '11px',
+              fontSize: '15px',
               color: 'var(--text-primary)',
               letterSpacing: '1px'
             }}
@@ -288,7 +183,7 @@ export const Hero = () => {
               position: 'absolute',
               top: '0',
               right: '64px',
-              fontSize: '11px',
+              fontSize: '15px',
               color: 'var(--accent-red)',
               letterSpacing: '1px',
               display: 'flex',
@@ -304,7 +199,7 @@ export const Hero = () => {
           <div style={{ textAlign: 'center' }}>
             <h1
               style={{
-                fontSize: '120px',
+                fontSize: '122px',
                 fontFamily: "'Cinzel', serif",
                 color: 'var(--text-primary)',
                 margin: '0 0 16px 0',
@@ -319,7 +214,7 @@ export const Hero = () => {
 
             <p
               style={{
-                fontSize: '13px',
+                fontSize: '15px',
                 color: 'var(--text-secondary)',
                 letterSpacing: '1px',
                 textTransform: 'uppercase',
@@ -334,7 +229,7 @@ export const Hero = () => {
               <button
                 className="button-terminal"
                 type="button"
-                onClick={() => scrollToSection('gallery')}
+                onClick={() => scrollToSection('operations')}
               >
                 [ACCESS_FILES →]
               </button>
@@ -350,7 +245,7 @@ export const Hero = () => {
             {/* Scroll Indicator */}
             <div
               style={{
-                fontSize: '12px',
+                fontSize: '22px',
                 color: 'var(--text-muted)',
                 animation: 'bounce-subtle 2s infinite',
                 marginBottom: '32px'
@@ -366,7 +261,7 @@ export const Hero = () => {
               position: 'absolute',
               bottom: '32px',
               left: '64px',
-              fontSize: '11px',
+              fontSize: '15px',
               color: 'var(--accent-red)',
               letterSpacing: '1px',
               lineHeight: '1.8'
@@ -383,7 +278,7 @@ export const Hero = () => {
               position: 'absolute',
               bottom: '32px',
               right: '64px',
-              fontSize: '11px',
+              fontSize: '15px',
               color: 'var(--accent-red)',
               letterSpacing: '1px'
             }}
@@ -391,7 +286,6 @@ export const Hero = () => {
             MOUSE: X:000 Y:000
           </div>
         </div>
-      )}
-    </section>
-  );
+      </section>
+    );
 };

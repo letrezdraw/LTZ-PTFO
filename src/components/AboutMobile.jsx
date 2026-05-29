@@ -70,7 +70,7 @@ export const AboutMobile = () => {
       <div
         className="section-stamp about-reveal"
         style={{
-          fontSize: '12px',
+          fontSize: '22px',
           color: 'var(--text-primary)',
           textTransform: 'uppercase',
           letterSpacing: '2px',
@@ -130,7 +130,7 @@ export const AboutMobile = () => {
                   background: 'rgba(0, 0, 0, 0.6)',
                   padding: '6px 10px',
                   border: '1px solid var(--accent-red)',
-                  fontSize: '10px',
+                  fontSize: '22px',
                   color: 'var(--accent-red)',
                   textTransform: 'uppercase',
                   letterSpacing: '1px',
@@ -157,7 +157,7 @@ export const AboutMobile = () => {
                   background: 'rgba(0, 0, 0, 0.6)',
                   padding: '6px 10px',
                   border: '1px solid var(--accent-red)',
-                  fontSize: '9px',
+                  fontSize: '15px',
                   color: 'var(--accent-red)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.5px',
@@ -179,26 +179,26 @@ export const AboutMobile = () => {
           >
             <BorderGlow className="about-reveal" glowColor="204 0 0" borderRadius={4} glowRadius={15} glowIntensity={0.6} colors={['#cc0000', '#ff4444', '#ff8888']} fillOpacity={0.2} edgeSensitivity={40} style={{ opacity: 0, transform: 'translateY(16px)' }}>
               <div style={{ padding: '12px' }}>
-                <dt style={{ fontSize: '10px', color: 'var(--accent-red)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>CODENAME</dt>
-                <dd style={{ fontSize: '12px', color: 'var(--text-primary)', margin: 0, fontWeight: 500 }}>LETREZDRAW</dd>
+                <dt style={{ fontSize: '22px', color: 'var(--accent-red)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>CODENAME</dt>
+                <dd style={{ fontSize: '22px', color: 'var(--text-primary)', margin: 0, fontWeight: 500 }}>LETREZDRAW</dd>
               </div>
             </BorderGlow>
             <BorderGlow className="about-reveal" glowColor="204 0 0" borderRadius={4} glowRadius={15} glowIntensity={0.6} colors={['#cc0000', '#ff4444', '#ff8888']} fillOpacity={0.2} edgeSensitivity={40} style={{ opacity: 0, transform: 'translateY(16px)' }}>
               <div style={{ padding: '12px' }}>
-                <dt style={{ fontSize: '10px', color: 'var(--accent-red)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>CLASS</dt>
-                <dd style={{ fontSize: '12px', color: 'var(--text-primary)', margin: 0, fontWeight: 500 }}>ILLUSTRATOR</dd>
+                <dt style={{ fontSize: '22px', color: 'var(--accent-red)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>CLASS</dt>
+                <dd style={{ fontSize: '22px', color: 'var(--text-primary)', margin: 0, fontWeight: 500 }}>ILLUSTRATOR</dd>
               </div>
             </BorderGlow>
             <BorderGlow className="about-reveal" glowColor="204 0 0" borderRadius={4} glowRadius={15} glowIntensity={0.6} colors={['#cc0000', '#ff4444', '#ff8888']} fillOpacity={0.2} edgeSensitivity={40} style={{ opacity: 0, transform: 'translateY(16px)' }}>
               <div style={{ padding: '12px' }}>
-                <dt style={{ fontSize: '10px', color: 'var(--accent-red)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>STATUS</dt>
-                <dd style={{ fontSize: '12px', color: 'var(--accent-red)', margin: 0, fontWeight: 600 }}>OPEN</dd>
+                <dt style={{ fontSize: '22px', color: 'var(--accent-red)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>STATUS</dt>
+                <dd style={{ fontSize: '22px', color: 'var(--accent-red)', margin: 0, fontWeight: 600 }}>OPEN</dd>
               </div>
             </BorderGlow>
             <BorderGlow className="about-reveal" glowColor="204 0 0" borderRadius={4} glowRadius={15} glowIntensity={0.6} colors={['#cc0000', '#ff4444', '#ff8888']} fillOpacity={0.2} edgeSensitivity={40} style={{ opacity: 0, transform: 'translateY(16px)' }}>
               <div style={{ padding: '12px' }}>
-                <dt style={{ fontSize: '10px', color: 'var(--accent-red)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>REMOTE</dt>
-                <dd style={{ fontSize: '12px', color: 'var(--text-primary)', margin: 0, fontWeight: 500 }}>ENABLED</dd>
+                <dt style={{ fontSize: '22px', color: 'var(--accent-red)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>REMOTE</dt>
+                <dd style={{ fontSize: '22px', color: 'var(--text-primary)', margin: 0, fontWeight: 500 }}>ENABLED</dd>
               </div>
             </BorderGlow>
           </div>
@@ -212,7 +212,7 @@ export const AboutMobile = () => {
           >
             <h3
               style={{
-                fontSize: '13px',
+                fontSize: '15px',
                 color: 'var(--accent-red)',
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
@@ -224,7 +224,7 @@ export const AboutMobile = () => {
             </h3>
             <p
               style={{
-                fontSize: '12px',
+                fontSize: '22px',
                 color: 'var(--text-secondary)',
                 lineHeight: '1.8',
                 margin: 0,
@@ -245,7 +245,7 @@ export const AboutMobile = () => {
           >
             <h3
               style={{
-                fontSize: '13px',
+                fontSize: '15px',
                 color: 'var(--accent-red)',
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
@@ -257,7 +257,7 @@ export const AboutMobile = () => {
             </h3>
             <ul
               style={{
-                fontSize: '12px',
+                fontSize: '22px',
                 color: 'var(--text-secondary)',
                 lineHeight: '1.8',
                 margin: 0,
@@ -283,7 +283,7 @@ export const AboutMobile = () => {
           >
             <h3
               style={{
-                fontSize: '13px',
+                fontSize: '15px',
                 color: 'var(--accent-red)',
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
@@ -295,7 +295,7 @@ export const AboutMobile = () => {
             </h3>
             <div
               style={{
-                fontSize: '12px',
+                fontSize: '22px',
                 color: 'var(--text-secondary)',
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -309,7 +309,7 @@ export const AboutMobile = () => {
                   style={{
                     padding: '6px 10px',
                     border: '1px solid var(--border-color)',
-                    fontSize: '10px',
+                    fontSize: '22px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.5px'
                   }}
@@ -338,7 +338,7 @@ export const AboutMobile = () => {
             >
               <div
                 style={{
-                  fontSize: '18px',
+                  fontSize: '22px',
                   color: 'var(--accent-red)',
                   fontWeight: 600,
                   marginBottom: '4px'
@@ -348,7 +348,7 @@ export const AboutMobile = () => {
               </div>
               <div
                 style={{
-                  fontSize: '10px',
+                  fontSize: '22px',
                   color: 'var(--text-secondary)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.5px'
@@ -367,7 +367,7 @@ export const AboutMobile = () => {
             >
               <div
                 style={{
-                  fontSize: '18px',
+                  fontSize: '22px',
                   color: 'var(--accent-red)',
                   fontWeight: 600,
                   marginBottom: '4px'
@@ -377,7 +377,7 @@ export const AboutMobile = () => {
               </div>
               <div
                 style={{
-                  fontSize: '10px',
+                  fontSize: '22px',
                   color: 'var(--text-secondary)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.5px'

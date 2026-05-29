@@ -30,11 +30,10 @@ export const Sidebar = () => {
       <div style={{
         writingMode: 'vertical-rl',
         textOrientation: 'mixed',
-        fontSize: '13px',
+        fontSize: '15px',
         color: 'var(--accent-red)',
         letterSpacing: '2px',
-        transform: 'rotate(180deg)',
-        transform: 'translateY(60px)',
+        transform: 'rotate(180deg) translateY(60px)',
         display: 'flex',
         alignItems: 'center',
         gap: '8px'
@@ -45,7 +44,7 @@ export const Sidebar = () => {
       <div style={{
         writingMode: 'vertical-rl',
         textOrientation: 'mixed',
-        fontSize: '13px',
+        fontSize: '15px',
         color: 'var(--text-secondary)',
         letterSpacing: '2px',
         transform: 'rotate(180deg)',

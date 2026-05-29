@@ -147,7 +147,6 @@ export const GalleryWeb = memo(({ artworks, onOpen }) => {
   // State counters for throttled updates
   const tickCounterRef = useRef(0);
   const edgeCounterRef = useRef(0);
-  const [tick, setTick] = useState(0);
   const [edgeVersion, setEdgeVersion] = useState(0);
 
   // ========================================================================
@@ -193,11 +192,7 @@ export const GalleryWeb = memo(({ artworks, onOpen }) => {
       // Update artwork data
       nodes[i].id = newNodes[i].id;
       nodes[i].artwork = newNodes[i].artwork;
-      // PRESERVE positions + motion for seamless transition
-      nodes[i].nx = nodes[i].nx;
-      nodes[i].ny = nodes[i].ny;
-      nodes[i].phx = nodes[i].phx;
-      nodes[i].phy = nodes[i].phy;
+      // Positions and motion preserved automatically
     }
   }, [displayArtworks]);
 
@@ -240,7 +235,7 @@ export const GalleryWeb = memo(({ artworks, onOpen }) => {
 
     // Update visual state every 4 frames (for hover scaling)
     if (tickCounterRef.current % 4 === 0) {
-      setTick((x) => x + 1);
+      setEdgeVersion((x) => x + 1);
     }
 
     // Update edge connections every 8 frames
@@ -399,7 +394,7 @@ export const GalleryWeb = memo(({ artworks, onOpen }) => {
   if (n === 0) {
     return (
       <div className="gallery-web gallery-web--empty">
-        <p style={{ color: 'var(--text-secondary)', fontSize: '12px' }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '22px' }}>
           Initializing constellation view...
         </p>
       </div>
@@ -418,7 +413,7 @@ export const GalleryWeb = memo(({ artworks, onOpen }) => {
         className="gallery-web__hint"
         style={{
           textAlign: 'center',
-          fontSize: '12px',
+          fontSize: '22px',
           color: 'var(--text-muted)',
           marginBottom: '12px',
           letterSpacing: '1px',

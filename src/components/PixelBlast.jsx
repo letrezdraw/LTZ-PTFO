@@ -27,11 +27,14 @@ const createTouchTexture = () => {
   };
   const drawPoint = p => {
     const pos = { x: p.x * size, y: (1 - p.y) * size };
-    let intensity = 1;
     const easeOutSine = t => Math.sin((t * Math.PI) / 2);
     const easeOutQuad = t => -t * (t - 2);
-    if (p.age < maxAge * 0.3) intensity = easeOutSine(p.age / (maxAge * 0.3));
-    else intensity = easeOutQuad(1 - (p.age - maxAge * 0.3) / (maxAge * 0.7)) || 0;
+    let intensity = 1;
+    if (p.age < maxAge * 0.3) {
+      intensity = easeOutSine(p.age / (maxAge * 0.3));
+    } else {
+      intensity = easeOutQuad(1 - (p.age - maxAge * 0.3) / (maxAge * 0.7)) || 0;
+    }
     intensity *= p.force;
     const color = `${((p.vx + 1) / 2) * 255}, ${((p.vy + 1) / 2) * 255}, ${intensity * 255}`;
     const offset = size * 5;
@@ -496,7 +499,7 @@ const PixelBlast = ({
       renderer.domElement.addEventListener('pointermove', onPointerMove, {
         passive: true
       });
-      let raf = 0;
+      let raf;
       const animate = () => {
         if (autoPauseOffscreen && !visibilityRef.current.visible) {
           raf = requestAnimationFrame(animate);

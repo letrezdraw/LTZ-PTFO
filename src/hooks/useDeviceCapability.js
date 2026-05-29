@@ -44,6 +44,7 @@ export const useDeviceCapability = () => {
     if (isMobile || isTablet) maxFPS = 30;
     if (isLowPower) maxFPS = 24;
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCapability({
       isMobile,
       isLowPower,

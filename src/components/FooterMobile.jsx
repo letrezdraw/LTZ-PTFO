@@ -10,7 +10,7 @@ export const FooterMobile = () => {
     >
       <div
         style={{
-          fontSize: '11px',
+          fontSize: '15px',
           color: 'var(--text-secondary)',
           marginBottom: '12px',
           letterSpacing: '0.5px'
@@ -21,7 +21,7 @@ export const FooterMobile = () => {
       
       <div
         style={{
-          fontSize: '10px',
+          fontSize: '22px',
           color: 'var(--text-secondary)',
           marginTop: '8px',
           letterSpacing: '0.5px'

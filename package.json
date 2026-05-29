@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "scan:artwork": "node scripts/scan-artwork.mjs",
+    "optimize:artwork": "node scripts/optimize-artwork.mjs",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",

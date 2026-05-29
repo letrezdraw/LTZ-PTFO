@@ -82,7 +82,7 @@ export const GalleryMobile = ({ artworks }) => {
     >
       <div
         style={{
-          fontSize: '11px',
+          fontSize: '15px',
           color: 'var(--text-primary)',
           textTransform: 'uppercase',
           letterSpacing: '1.5px',
@@ -168,7 +168,7 @@ export const GalleryMobile = ({ artworks }) => {
                     right: 0,
                     background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
                     padding: '12px 8px 8px',
-                    fontSize: '11px'
+                    fontSize: '15px'
                   }}
                 >
                   <div

@@ -44,7 +44,7 @@ export const NavbarMobile = () => {
         {/* Logo */}
         <div
           style={{
-            fontSize: '11px',
+            fontSize: '15px',
             fontWeight: 700,
             color: 'var(--accent-red)',
             textTransform: 'uppercase',
@@ -61,7 +61,7 @@ export const NavbarMobile = () => {
           type="button"
           onClick={increaseRenderTheme}
           style={{
-            fontSize: '10px',
+            fontSize: '22px',
             color: 'var(--text-secondary)',
             border: '1px solid var(--border-color)',
             background: 'transparent',
@@ -87,7 +87,7 @@ export const NavbarMobile = () => {
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
           style={{
-            fontSize: '16px',
+            fontSize: '22px',
             color: 'var(--text-primary)',
             border: 'none',
             background: 'none',
@@ -121,7 +121,7 @@ export const NavbarMobile = () => {
               onClick={() => handleNav(item.id)}
               style={{
                 padding: '12px 16px',
-                fontSize: '12px',
+                fontSize: '22px',
                 color: 'var(--text-secondary)',
                 background: 'transparent',
                 border: 'none',

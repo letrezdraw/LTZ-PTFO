@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
 import gsap from 'gsap';
-import { useDeviceCapability } from '../hooks/useDeviceCapability';
-import { useRenderTheme } from '../context/RenderThemeContext';
 
 export const HeroMobile = () => {
   const [bootComplete, setBootComplete] = useState(false);
   const [showGlitch, setShowGlitch] = useState(false);
-  const device = useDeviceCapability();
-  const { themeIndex } = useRenderTheme();
+  const [glitchOffset] = useState(() => Math.random() * 4 - 2);
 
   // Disable scrolling during boot sequence
   useEffect(() => {
@@ -125,7 +122,7 @@ export const HeroMobile = () => {
           style={{
             width: '100%',
             fontFamily: "'Share Tech Mono', monospace",
-            fontSize: '13px',
+            fontSize: '15px',
             lineHeight: '2.5',
             color: 'var(--text-primary)',
             whiteSpace: 'pre-wrap',
@@ -144,7 +141,7 @@ export const HeroMobile = () => {
         <div style={{ textAlign: 'center', zIndex: 10, animation: 'fadeIn 0.6s ease-out' }}>
           <div
             style={{
-              fontSize: '32px',
+              fontSize: '34px',
               fontWeight: 700,
               color: 'var(--accent-red)',
               textTransform: 'uppercase',
@@ -163,7 +160,7 @@ export const HeroMobile = () => {
                 style={{
                   position: 'absolute',
                   top: '2px',
-                  left: Math.random() * 4 - 2 + 'px',
+                  left: glitchOffset + 'px',
                   color: 'var(--bg-secondary)',
                   opacity: 0.7,
                   zIndex: -1
@@ -176,7 +173,7 @@ export const HeroMobile = () => {
           </div>
           <div
             style={{
-              fontSize: '12px',
+              fontSize: '22px',
               color: 'var(--text-secondary)',
               textTransform: 'uppercase',
               letterSpacing: '1.5px',
@@ -188,7 +185,7 @@ export const HeroMobile = () => {
           </div>
           <p
             style={{
-              fontSize: '12px',
+              fontSize: '22px',
               color: 'var(--text-secondary)',
               maxWidth: '280px',
               lineHeight: '1.8',
@@ -208,7 +205,7 @@ export const HeroMobile = () => {
             }}
             style={{
               padding: '10px 20px',
-              fontSize: '11px',
+              fontSize: '15px',
               fontWeight: 600,
               color: 'var(--bg-primary)',
               background: 'var(--accent-red)',

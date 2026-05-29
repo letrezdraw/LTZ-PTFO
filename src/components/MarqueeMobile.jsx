@@ -26,7 +26,7 @@ export const MarqueeMobile = ({ text, direction = 'left', speed = 'slow' }) => {
           whiteSpace: 'nowrap',
           animation: `${animationName} ${speedMap[speed]} linear infinite`,
           color: 'var(--accent-red)',
-          fontSize: '11px',
+          fontSize: '15px',
           letterSpacing: '1.5px',
           textTransform: 'uppercase',
           fontWeight: 500
