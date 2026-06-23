@@ -2,5 +2,10 @@
 export function publicAsset(relativePath) {
   const base = import.meta.env.BASE_URL || '/';
   const clean = String(relativePath).replace(/^\/+/, '');
-  return `${base}${clean}`.replace(/\/{2,}/g, '/');
+  // URL-encode each segment of the path separately to preserve forward slashes
+  const encoded = clean
+    .split('/')
+    .map(segment => encodeURIComponent(decodeURIComponent(segment)))
+    .join('/');
+  return `${base}${encoded}`.replace(/\/{2,}/g, '/');
 }
